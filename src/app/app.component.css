@@ -14,12 +14,15 @@
 }
 
 h1{
-    font-size: 26px;;
+    font-size: 26px;
+    font-weight: 400;
 }
 .orbits-actions-button{ font-weight: 200; }
 .orbits-actions-bundle-button{ background-color: rgba(247, 147, 30, 1) ; border-color: rgba(247, 147, 30, 1); }
 .orbits-actions-assign-button{ background-color: rgba(0, 169, 157, 1) ; border-color: rgba(0, 169, 157, 1); }
 .orbits-actions-search-button{ background-color: rgba(0, 91, 139, 1) ; border-color: rgba(0, 91, 139, 1); }
+
+.orbits-subject-filter{ font-weight: 200; }
 
 @media (max-width: 768px) {
     .sidenav {
