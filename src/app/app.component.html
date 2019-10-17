@@ -20,7 +20,7 @@
     </div>
   </div>
   <div class="navbar navbar-dark bg-orbit shadow-sm fixed-top">
-    <div class="container-fluid d-flex justify-content-between">
+    <div class="container-fluid d-flex justify-content-between px-0 px-sm-2">
       <div class="d-flex align-items-center">
         <a href="#" class="navbar-brand py-1 d-flex align-items-center">
           <img src="/assets/img/logo.png"  class="img-fluid">
@@ -29,18 +29,30 @@
           <i class="fa fa-bars" aria-hidden="true"></i>
         </button>
       </div>
-      <button class="btn text-light" type="button"><i class="fa fa-power-off mr-2" aria-hidden="true"></i> Logout</button>
+      <button class="btn text-light p-0" type="button"><i class="fa fa-power-off mr-2" aria-hidden="true"></i> Logout</button>
     </div>
   </div>
 </header>
 <div class="container-fluid">
   <div class="row flex-xl-nowrap">
-    <div class="sidenav" [ngClass]="{'active': activeSide}">
+    <div class="sidenav py-4" [ngClass]="{'active': activeSide}">
       <h3>Side</h3>
     </div>
-    <main class="col">
-        <h1 class="bd-title" id="content">Main</h1>
+    <main class="col px-3 px-sm-4 py-4">
+      <div class="row">
+        <div class="col-12 col-sm-auto">
+            <h1 id="content">Welcome to Orbits</h1>
+        </div>
+        <div class="col-12 col-sm d-flex flex-xl-nowrap flex-wrap flex-column flex-sm-row align-items-center orbits-actions justify-content-center justify-content-sm-end">
+            <p class="p-0 mt-0 mb-1 mr-2 ml-0 ml-sm-auto text-center text-sm-left orbits-actions-directions">Please select an option</p>
+            <div class="orbits-actions">
+                <button type="button" class="btn btn-primary orbits-actions-button orbits-actions-bundle-button mr-1 mb-1"><i class="fas fa-box"></i> Create Bunddle</button>
+                <button type="button" class="btn btn-secondary orbits-actions-button mx-1 mb-1 orbits-actions-assign-button"><i class="fas fa-play-circle"></i> Assign Videos</button>
+                <button type="button" class="btn btn-info ml-1 orbits-actions-button mb-1 orbits-actions-search-button"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </div>
+        </div>
+      </div>
    </main>
+   <footer></footer>
   </div>
 </div>
-<footer></footer>
