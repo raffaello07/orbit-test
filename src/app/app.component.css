@@ -1,0 +1,24 @@
+.sidenav{
+    width: 275px;
+    border-right: 1px solid rgba(0,0,0,.1);
+    box-shadow: 2px 0px 6px 0px #0000001A;
+    position: sticky;
+    z-index: 1000;
+    top: 4.5rem;
+    height: calc(100vh - 4.5rem);
+    transition: all 0.3s;
+    background-color: #fff;
+}
+.sidenav.active {
+    margin-left: -275px;
+}
+
+@media (max-width: 768px) {
+    .sidenav {
+        margin-left: -275px;
+        position: fixed;
+    }
+    .sidenav.active {
+        margin-left: 0;
+    }
+}
