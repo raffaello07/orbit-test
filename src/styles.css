@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    padding-top: 4.5rem;
+    padding-bottom: 4.5rem;
+    color: #5a5a5a;
+
+}
+.bg-orbit{
+    background-color: #09557e;
+}
