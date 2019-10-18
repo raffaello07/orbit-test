@@ -29,8 +29,8 @@
           class="col-12 col-sm d-flex flex-xl-nowrap flex-wrap flex-column flex-sm-row align-items-center orbits-actions justify-content-center justify-content-sm-end">
           <p class="p-0 mt-0 mb-1 mr-2 ml-0 ml-sm-auto text-center text-sm-left orbits-actions-directions">Please select an option</p>
           <div class="orbits-actions">
-            <button (click)="startSelection('bunddle')" type="button" class="btn btn-primary orbits-actions-button orbits-actions-bundle-button mr-1 mb-1" [ngClass]="{'disabled': selectionMode}" [disabled]="selectionMode">
-              <i class="fas fa-box"></i> Create Bunddle
+            <button (click)="startSelection('bundle')" type="button" class="btn btn-primary orbits-actions-button orbits-actions-bundle-button mr-1 mb-1" [ngClass]="{'disabled': selectionMode}" [disabled]="selectionMode">
+              <i class="fas fa-box"></i> Create Bundle
             </button>
             <button (click)="startSelection('assign')"  type="button" class="btn btn-secondary orbits-actions-button mx-1 mb-1 orbits-actions-assign-button" [ngClass]="{'disabled': selectionMode}" [disabled]="selectionMode">
               <i class="fas fa-play-circle"></i> Assign Videos
@@ -46,28 +46,31 @@
           <div class="card">
               <div class="card">
                 <div class="card-header">
-                    <h5 class="card-title pb-3 pt-2">Assign videos</h5>
+                    <h5 class="card-title pb-3 pt-2"> {{ selectionType === 'bundle' ? 'Create bundle' : 'Assign videos' }}</h5>
                 </div>
                 <div class="card-body">
-                  <p class="mb-1">Select the videos you want to assgin</p>
+                  <mat-form-field class="w-50" *ngIf="selectionType === 'bundle'">
+                    <input matInput placeholder="Add Bundle Name">
+                  </mat-form-field> 
+                  <p class="mb-1">Select the videos you want to {{ selectionType === 'bundle' ? 'add to the bundle' : 'assgin' }}</p>
                   <div class="selected-videos d-flex flex-wrap">
                       <span *ngFor="let video of selectedVideos" class="badge badge-secondary selected-video-badge mr-1 mb-1" (click)="selectVideo(video)"> VIDEO {{ video.id}} <i class="fas fa-times-circle"></i></span>
-                  </div>
+                  </div>                 
                   <div class="select-all d-flex align-items-center mt-2 mb-4 ml-3">
                       <div (click)="selectAll()" class="video-checkbox text-center d-flex align-items-center mr-2" [ngClass]="{'checked': allSelected()}" >
                           <i class="fas fa-check mx-auto" *ngIf="allSelected()"></i>
                       </div>
                       <span>Select all videos</span>
                   </div>
-                  <p class="mb-1">Assgin videos to</p>
-                  <form class="form-inline">
+                  <p class="mb-1" *ngIf="selectionType === 'assign'">Assgin videos to</p>
+                  <form class="form-inline" *ngIf="selectionType === 'assign'">
                     <input type="email" class="form-control" placeholder="email@email.com">
                   
                     <button type="submit" class="btn btn-primary my-1 ml-1 orbits-actions-assign-button">Add</button>
                   </form>
-                  <p class="text-muted small">Add the email addresses of the people that will have this bundle assigned.</p>
+                  <p class="text-muted small" *ngIf="selectionType === 'assign'">Add the email addresses of the people that will have this bundle assigned.</p>
                   <div class="selection-buttons mt-4">
-                    <button type="button" class="btn btn-success disabled" disabled>Assign</button>
+                    <button type="button" class="btn btn-success disabled" disabled> {{ selectionType === 'bundle' ? 'Create' : 'Assign' }} </button>
                     <button type="button" class="btn btn-light ml-2" (click)="startSelection('')">Cancel</button>
                   </div>
                 </div>

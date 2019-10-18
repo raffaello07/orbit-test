@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import {DropdownModule} from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     BrowserAnimationsModule,
     DropdownModule,
-    BrowserModule
+    BrowserModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -7,3 +7,6 @@ body {
 .bg-orbit{
     background-color: #09557e;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
