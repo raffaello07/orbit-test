@@ -24,6 +24,39 @@ h1{
 
 .orbits-subject-filter{ font-weight: 200; }
 
+.card, .video-thumb {
+    border-radius: .50rem;
+    border: none;
+    box-shadow: 0 3px 7px #0000001A;
+    transition: all 0.3s;
+}
+.video-container{
+    transition: all 0.3s;
+}
+
+.video-container:hover .card, .video-thumb:hover, .card:hover {
+    box-shadow: 0 5px 12px #0000001F;
+}
+
+.video-checkbox, .video-container .fa-play-circle, .video-badges .badge{
+    position: absolute;
+}
+.video-subject { left: 5px; bottom: 5px; background-color: rgba(0, 169, 157, 1) ; border-color: rgba(0, 169, 157, 1); }
+.video-duration { right: 5px; bottom: 5px; }
+.video-container .fa-play-circle { left: 0;right: 0;top: 0;bottom: 0;margin-top: auto; margin-bottom: auto;color: #fff; width: 80px; height: 80px; cursor: pointer; color: #fff; }
+.video-checkbox { right: 5px;top: 5px;  margin: 0 !important; padding: 0 !important; background-color: #fff; height: 25px; width: 25px; border-radius: 50%; cursor: pointer; }
+.video-checkbox .fas { display: none; }
+.video-checkbox.checked { background-color: rgba(247, 147, 30, 1) ;   }
+.video-checkbox.checked .fas { display: block; color: #fff; }
+.video-id { font-size: 28px; font-weight: bold; display: inline-block; border-right: 1px solid rgba(0,0,0,.1); }
+.video-name { font-weight: 200; }
+.video-badges .badge { border-radius: 1.25rem; font-weight: 200; }
+
+.video-thumb{
+    color: #fff;
+    cursor: pointer;
+}
+
 @media (max-width: 768px) {
     .sidenav {
         margin-left: -275px;
