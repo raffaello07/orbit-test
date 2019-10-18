@@ -18,7 +18,19 @@
 <div class="container-fluid">
   <div class="row flex-xl-nowrap">
     <div class="sidenav py-4" [ngClass]="{'active': activeSide}">
-      <h3>Side</h3>
+      <div class="d-flex flex-column align-items-center user-container">
+        <i class="far fa-user-circle fa-5x user-avatar"></i>
+        <h3 class="user-name mt-3">James Sanchez</h3>
+        <h4 class="user-role">ADMIN</h4>
+        <p class="small text-muted">james@medtrainer.com</p>
+      </div>
+      <ul class="list-group side-navegation">
+        <li class="list-group-item active side-item selectable">Video Distribution</li>
+        <li class="list-group-item side-item selectable">Dapibus ac facilisis in</li>
+        <li class="list-group-item side-item selectable">Morbi leo risus</li>
+        <li class="list-group-item side-item selectable">Porta ac consectetur ac</li>
+        <li class="list-group-item side-item selectable">Vestibulum at eros</li>
+      </ul>
     </div>
     <main class="col px-3 px-sm-4 py-4">
       <div class="row">

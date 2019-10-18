@@ -68,6 +68,29 @@ h1{
 
 .selectable { cursor: pointer !important; }
 
+.user-avatar { color: gray !important; }
+.user-name { font-size: 18px; }
+.user-role{ color: #007bff; font-size: 18px; }
+
+.side-item.active {
+    border-color: rgba(81, 96, 108, 1);
+    background-color: rgba(81, 96, 108, 1);
+    border-left: 4px solid rgba(247, 147, 30, 1);
+}
+.side-item.active:hover {
+    border-color: rgba(81, 96, 108, 1);
+    background-color: rgba(81, 96, 108, 1);
+    border-left: 4px solid rgba(247, 147, 30, 1);
+}
+.side-item:hover {
+    background-color: rgba(101, 116, 128, 1);
+    border-color: rgba(101, 116, 128, 1);
+    color: #fff;
+}
+.side-item {
+    cursor: pointer !important;
+}
+
 .video-thumb{
     color: #fff;
     cursor: pointer;
