@@ -23,21 +23,55 @@
     <main class="col px-3 px-sm-4 py-4">
       <div class="row">
         <div class="col-12 col-sm-auto">
-          <h1 id="content">Welcome to Orbits</h1>
+          <h1 id="content">Welcome to Orbits!</h1>
         </div>
         <div
           class="col-12 col-sm d-flex flex-xl-nowrap flex-wrap flex-column flex-sm-row align-items-center orbits-actions justify-content-center justify-content-sm-end">
-          <p class="p-0 mt-0 mb-1 mr-2 ml-0 ml-sm-auto text-center text-sm-left orbits-actions-directions">Please select
-            an option</p>
+          <p class="p-0 mt-0 mb-1 mr-2 ml-0 ml-sm-auto text-center text-sm-left orbits-actions-directions">Please select an option</p>
           <div class="orbits-actions">
-            <button type="button"
-              class="btn btn-primary orbits-actions-button orbits-actions-bundle-button mr-1 mb-1"><i
-                class="fas fa-box"></i> Create Bunddle</button>
-            <button type="button"
-              class="btn btn-secondary orbits-actions-button mx-1 mb-1 orbits-actions-assign-button"><i
-                class="fas fa-play-circle"></i> Assign Videos</button>
-            <button type="button" class="btn btn-info ml-1 orbits-actions-button mb-1 orbits-actions-search-button"><i
-                class="fa fa-search" aria-hidden="true"></i></button>
+            <button (click)="startSelection('bunddle')" type="button" class="btn btn-primary orbits-actions-button orbits-actions-bundle-button mr-1 mb-1" [ngClass]="{'disabled': selectionMode}" [disabled]="selectionMode">
+              <i class="fas fa-box"></i> Create Bunddle
+            </button>
+            <button (click)="startSelection('assign')"  type="button" class="btn btn-secondary orbits-actions-button mx-1 mb-1 orbits-actions-assign-button" [ngClass]="{'disabled': selectionMode}" [disabled]="selectionMode">
+              <i class="fas fa-play-circle"></i> Assign Videos
+            </button>
+            <button type="button" class="btn btn-info ml-1 orbits-actions-button mb-1 orbits-actions-search-button">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-4" *ngIf="selectionMode">
+        <div class="col-12">
+          <div class="card">
+              <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title pb-3 pt-2">Assign videos</h5>
+                </div>
+                <div class="card-body">
+                  <p class="mb-1">Select the videos you want to assgin</p>
+                  <div class="selected-videos d-flex flex-wrap">
+                      <span *ngFor="let video of selectedVideos" class="badge badge-secondary selected-video-badge mr-1 mb-1" (click)="selectVideo(video)"> VIDEO {{ video.id}} <i class="fas fa-times-circle"></i></span>
+                  </div>
+                  <div class="select-all d-flex align-items-center mt-2 mb-4 ml-3">
+                      <div (click)="selectAll()" class="video-checkbox text-center d-flex align-items-center mr-2" [ngClass]="{'checked': allSelected()}" >
+                          <i class="fas fa-check mx-auto" *ngIf="allSelected()"></i>
+                      </div>
+                      <span>Select all videos</span>
+                  </div>
+                  <p class="mb-1">Assgin videos to</p>
+                  <form class="form-inline">
+                    <input type="email" class="form-control" placeholder="email@email.com">
+                  
+                    <button type="submit" class="btn btn-primary my-1 ml-1 orbits-actions-assign-button">Add</button>
+                  </form>
+                  <p class="text-muted small">Add the email addresses of the people that will have this bundle assigned.</p>
+                  <div class="selection-buttons mt-4">
+                    <button type="button" class="btn btn-success disabled" disabled>Assign</button>
+                    <button type="button" class="btn btn-light ml-2" (click)="startSelection('')">Cancel</button>
+                  </div>
+                </div>
+              </div>
           </div>
         </div>
       </div>
@@ -49,20 +83,20 @@
         </div>
       </div>
       <div class="row mt-4">
-        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 video-container my-4" *ngFor="let video of videos">
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 video-container my-4" [ngClass]="{'video-selected': isSelected(video), 'selectable': selectionMode}" (click)="selectVideo(video)" *ngFor="let video of videos">
           <div class="card w-100 mb-3">
             <img class="bd-placeholder-img card-img-top video-thumb" [src]="'/assets/img/'+ video.thumbnail">
-            <div class="video-checkbox text-center d-flex align-items-center">
-                <i class="fas fa-check mx-auto"></i>
+            <div class="video-checkbox text-center d-flex align-items-center" *ngIf="selectionMode" [ngClass]="{'checked': isSelected(video)}" >
+                <i class="fas fa-check mx-auto" *ngIf="isSelected(video)"></i>
             </div>
-            <i class="far fa-play-circle fa-5x mx-auto"></i>
+            <i class="far fa-play-circle fa-5x mx-auto" [hidden]="selectionMode"></i>
             <div class="video-badges">
               <span class="badge badge-secondary video-subject">{{ video.subject}}</span>
               <span class="badge badge-primary video-duration">{{ video.duration}}</span>
             </div>
 
           </div>
-          <div class="card w-100">
+          <div class="card w-100 video-info-card">
             <div class="card-body video-meta d-flex align-items-center">
               <span class="video-id mr-2 pr-2">{{ video.id }}</span><span class="video-name">{{ video.name }}</span>
             </div>

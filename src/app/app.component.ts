@@ -40,6 +40,43 @@ export class AppComponent {
 
   selectedVideos: any [] = [];
 
-selectedFilter: any = null;
+  selectedFilter: any = null;
+
+  isSelected(video): boolean {
+    if (!video) { return false; }
+    return  !!this.selectedVideos.find( vid => vid.id === video.id);
+  }
+
+  selectVideo(video) {
+    if (!video || !this.selectionMode) { return ; }
+    if (this.isSelected(video)) {
+      this.selectedVideos = this.selectedVideos.filter(vid => vid.id !== video.id);
+    } else {
+      this.selectedVideos.push(video);
+    }
+  }
+
+  selectAll() {
+    if (this.allSelected()) { this.selectedVideos = []; return ;  }
+    this.selectedVideos = this.videos.map(vid => vid);
+  }
+  allSelected(): boolean {
+    return this.selectedVideos.length === this.videos.length;
+  }
+
+  private reset() {
+    this.selectedVideos = [];
+    this.selectionMode = false;
+    this.selectionType = '';
+  }
+
+  startSelection( mode: string ) {
+    if (this.selectionMode) {
+      this.reset();
+    } else {
+      this.selectionMode = true;
+      this.selectionType = mode;
+    }
+  }
 
 }
