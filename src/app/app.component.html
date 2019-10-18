@@ -98,7 +98,7 @@
         </div>
       </div>
       <div class="row mt-4">
-        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 video-container my-4" [ngClass]="{'video-selected': isSelected(video), 'selectable': selectionMode}" (click)="selectVideo(video)" *ngFor="let video of videos">
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 video-container my-4" [ngClass]="{'video-selected': isSelected(video), 'selectable': selectionMode}" (click)="selectVideo(video)" *ngFor="let video of filteredVideos">
           <div class="card w-100 mb-3">
             <img class="bd-placeholder-img card-img-top video-thumb" [src]="'/assets/img/'+ video.thumbnail">
             <div class="video-checkbox text-center d-flex align-items-center" *ngIf="selectionMode" [ngClass]="{'checked': isSelected(video)}" >
